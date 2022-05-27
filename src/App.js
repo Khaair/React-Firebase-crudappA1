@@ -1,23 +1,22 @@
-import logo from './logo.svg';
 import './App.css';
+import Form from './components/Form';
+import Viewdata from './components/Viewdata';
+import { useState } from "react";
+
 
 function App() {
+
+  const [userId, setUserId] = useState("");
+
+  const getUserIdHandler = (id) => {
+    console.log("The ID of document to be edited: ", id);
+    setUserId(id);
+  };
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <Form id={userId} setUserId={setUserId}/>
+
+    <Viewdata getBookId={getUserIdHandler}/>
     </div>
   );
 }
